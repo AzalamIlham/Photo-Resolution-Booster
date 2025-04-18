@@ -1,0 +1,19 @@
+<div class="upload-container">
+  <div class="title-box">
+    <h2>Photo Resolution Booster</h2>
+  </div>
+
+  <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+  <button (click)="uploadImage()" [disabled]="!selectedFile">Convert</button>
+
+  <!-- Message pendant le traitement -->
+  <div *ngIf="isLoading" class="loading-message">
+    <p>Your photo is being processed...</p>
+  </div>
+
+  <!-- Résultat -->
+  <div *ngIf="hdImageUrl">
+    <img [src]="hdImageUrl" alt="Image HD" style="max-width: 100%; height: auto;" />
+    <a [href]="hdImageUrl" download="image_hd.jpeg">Download</a>
+  </div>
+</div>
